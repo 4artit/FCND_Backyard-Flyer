@@ -43,7 +43,6 @@ class BackyardFlyer(Drone):
         """
         if self.flight_state == States.TAKEOFF:
             altitude = -1 * self.local_position[2]
-
             if altitude > 0.97 * self.target_position[2]:
                 self.calculate_box()
                 self.target_position =  self.all_waypoints[0]
@@ -121,6 +120,7 @@ class BackyardFlyer(Drone):
         """
         print("takeoff transition")
         target_position = 5.0
+        self.target_position[2] = target_position
         self.takeoff(target_position)
         self.flight_state = States.TAKEOFF
 
